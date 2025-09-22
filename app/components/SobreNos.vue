@@ -5,7 +5,7 @@
         <!-- Lado esquerdo - Logo -->
         <div class="sobre-nos-image">
           <img 
-            src="/images/logo_m2s.png" 
+            src="/images/logo.png" 
             alt="M2S Tech Solutions Logo" 
             class="logo-image"
           >

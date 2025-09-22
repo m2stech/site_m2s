@@ -4,13 +4,11 @@
       <nav class="nav">
         <!-- Logo -->
         <div class="logo">
-          <div class="logo-icon">
-            <span class="logo-text">M2S</span>
-          </div>
-          <div class="logo-info">
-            <h1 class="logo-title">M2S Tech Solutions</h1>
-            <p class="logo-subtitle">Inteligência para suas vendas aéreas</p>
-          </div>
+          <img 
+            src="/images/logo.png" 
+            alt="M2S Tech Solutions" 
+            class="logo-image"
+          >
         </div>
         
         <!-- Navigation Links -->
@@ -119,43 +117,13 @@ const scrollToMobile = (elementId) => {
 .logo {
   display: flex;
   align-items: center;
-  gap: 1rem;
 }
 
-.logo-icon {
-  width: 50px;
-  height: 50px;
-  background: linear-gradient(135deg, #ff8c00 0%, #e67c00 100%);
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.logo-text {
-  color: white;
-  font-weight: 800;
-  font-size: 1.2rem;
-}
-
-.logo-info {
-  display: flex;
-  flex-direction: column;
-}
-
-.logo-title {
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: #d6d6d6;
-  margin: 0;
-  line-height: 1.2;
-}
-
-.logo-subtitle {
-  font-size: 0.8rem;
-  color: #ff8c00;
-  margin: 0;
-  line-height: 1.2;
+.logo-image {
+  height: 60px;
+  width: auto;
+  object-fit: contain;
+  transition: all 0.3s ease;
 }
 
 .nav-links {
@@ -232,8 +200,8 @@ const scrollToMobile = (elementId) => {
 
 /* Responsividade */
 @media (max-width: 768px) {
-  .logo-info {
-    display: none;
+  .logo-image {
+    height: 50px;
   }
   
   .nav-links {
@@ -250,13 +218,8 @@ const scrollToMobile = (elementId) => {
 }
 
 @media (max-width: 480px) {
-  .logo-icon {
-    width: 40px;
+  .logo-image {
     height: 40px;
-  }
-  
-  .logo-text {
-    font-size: 1rem;
   }
 }
 </style>
