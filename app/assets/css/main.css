@@ -1,0 +1,167 @@
+/* M2S Tech Solutions - Sistema de Design */
+
+/* Variáveis CSS para as cores do sistema */
+:root {
+  /* Cores primárias da marca M2S */
+  --m2s-orange: #ff8c00;
+  --m2s-light: #d6d6d6;
+  --m2s-dark: #545454;
+  --m2s-bg: #1d1d1c;
+  
+  /* Variações para diferentes contextos */
+  --m2s-orange-hover: #e67c00;
+  --m2s-orange-light: #ffad4d;
+  --m2s-orange-dark: #cc7000;
+  
+  /* Tons de cinza baseados nas cores da marca */
+  --m2s-gray-50: #f9f9f9;
+  --m2s-gray-100: #e8e8e8;
+  --m2s-gray-200: #d6d6d6;
+  --m2s-gray-300: #b8b8b8;
+  --m2s-gray-400: #9a9a9a;
+  --m2s-gray-500: #7c7c7c;
+  --m2s-gray-600: #545454;
+  --m2s-gray-700: #3a3a3a;
+  --m2s-gray-800: #2a2a28;
+  --m2s-gray-900: #1d1d1c;
+  
+  /* Cores semânticas */
+  --m2s-success: #10b981;
+  --m2s-warning: #f59e0b;
+  --m2s-error: #ef4444;
+  --m2s-info: #3b82f6;
+}
+
+/* Estilos base para o sistema */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* Reset e configurações base */
+  * {
+    @apply border-m2s-border-default;
+  }
+  
+  html {
+    @apply scroll-smooth;
+  }
+  
+  body {
+    @apply bg-m2s-background-primary text-m2s-text-primary font-sans antialiased;
+  }
+  
+  /* Headings com a fonte display */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display font-semibold text-m2s-text-primary;
+  }
+  
+  /* Links com estilo padrão */
+  a {
+    @apply text-m2s-text-accent hover:text-m2s-hover-orange transition-colors duration-200;
+  }
+}
+
+@layer components {
+  /* Componentes de botão do sistema M2S */
+  .btn-m2s {
+    @apply px-6 py-3 rounded-lg font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2;
+  }
+  
+  .btn-m2s-primary {
+    @apply btn-m2s bg-m2s-primary-orange text-white hover:bg-m2s-hover-orange focus:ring-m2s-primary-orange shadow-orange;
+  }
+  
+  .btn-m2s-secondary {
+    @apply btn-m2s bg-m2s-background-secondary text-m2s-text-primary border border-m2s-border-default hover:bg-m2s-primary-dark focus:ring-m2s-primary-dark;
+  }
+  
+  .btn-m2s-outline {
+    @apply btn-m2s bg-transparent text-m2s-text-accent border border-m2s-primary-orange hover:bg-m2s-primary-orange hover:text-white focus:ring-m2s-primary-orange;
+  }
+  
+  /* Cards do sistema */
+  .card-m2s {
+    @apply bg-m2s-background-secondary border border-m2s-border-default rounded-xl p-6 shadow-dark;
+  }
+  
+  .card-m2s-hover {
+    @apply card-m2s hover:border-m2s-border-accent hover:shadow-orange-lg transition-all duration-300;
+  }
+  
+  /* Inputs do sistema */
+  .input-m2s {
+    @apply w-full px-4 py-3 bg-m2s-background-secondary border border-m2s-border-default rounded-lg text-m2s-text-primary placeholder-m2s-primary-dark focus:outline-none focus:ring-2 focus:ring-m2s-primary-orange focus:border-transparent transition-all duration-200;
+  }
+  
+  /* Seções com destaque */
+  .section-m2s {
+    @apply py-16 px-4 sm:px-6 lg:px-8;
+  }
+  
+  .section-m2s-dark {
+    @apply section-m2s bg-m2s-background-primary;
+  }
+  
+  .section-m2s-light {
+    @apply section-m2s bg-m2s-background-secondary;
+  }
+  
+  /* Container responsivo */
+  .container-m2s {
+    @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+  
+  /* Gradientes personalizados */
+  .gradient-m2s-orange {
+    @apply bg-gradient-to-r from-m2s-primary-orange to-m2s-hover-orange;
+  }
+  
+  .gradient-m2s-dark {
+    @apply bg-gradient-to-r from-m2s-background-primary to-m2s-background-secondary;
+  }
+  
+  /* Texto com gradiente */
+  .text-gradient-m2s {
+    @apply bg-gradient-to-r from-m2s-primary-orange to-m2s-hover-orange bg-clip-text text-transparent;
+  }
+}
+
+@layer utilities {
+  /* Utilitários personalizados para animações */
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+  
+  /* Utilidades para scrollbar personalizada */
+  .scrollbar-m2s {
+    scrollbar-width: thin;
+    scrollbar-color: var(--m2s-orange) var(--m2s-bg);
+  }
+  
+  .scrollbar-m2s::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  .scrollbar-m2s::-webkit-scrollbar-track {
+    background: var(--m2s-bg);
+  }
+  
+  .scrollbar-m2s::-webkit-scrollbar-thumb {
+    background-color: var(--m2s-orange);
+    border-radius: 4px;
+  }
+  
+  .scrollbar-m2s::-webkit-scrollbar-thumb:hover {
+    background-color: var(--m2s-orange-hover);
+  }
+}
