@@ -29,7 +29,8 @@ export default defineNuxtConfig({
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
             gtag('config', 'G-70K83WEHD5');
-          `
+          `,
+          type: 'text/javascript'
         },
         {
           innerHTML: `

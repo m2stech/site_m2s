@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teste Google Analytics - M2S</title>
+  
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-70K83WEHD5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-70K83WEHD5');
+  </script>
+</head>
+<body>
+  <h1>Teste Google Analytics - M2S Tech Solutions</h1>
+  <p>Esta página é para testar se o Google Analytics está funcionando corretamente.</p>
+  
+  <script>
+    // Verificar se o Google Analytics está carregado
+    setTimeout(() => {
+      if (typeof gtag !== 'undefined') {
+        console.log('✅ Google Analytics (gtag) está carregado corretamente!');
+        document.body.innerHTML += '<div style="color: green; font-weight: bold; margin: 20px;">✅ Google Analytics está funcionando!</div>';
+        
+        // Enviar um evento de teste
+        gtag('event', 'page_view_test', {
+          page_title: 'Teste Analytics M2S',
+          page_location: window.location.href
+        });
+        console.log('📊 Evento de teste enviado para Google Analytics');
+      } else {
+        console.log('❌ Google Analytics não foi carregado');
+        document.body.innerHTML += '<div style="color: red; font-weight: bold; margin: 20px;">❌ Google Analytics NÃO está funcionando!</div>';
+      }
+      
+      if (typeof dataLayer !== 'undefined') {
+        console.log('✅ DataLayer está disponível:', dataLayer);
+        document.body.innerHTML += '<div style="color: blue; margin: 20px;">📊 DataLayer: ' + dataLayer.length + ' eventos</div>';
+      }
+    }, 2000);
+  </script>
+</body>
+</html>
