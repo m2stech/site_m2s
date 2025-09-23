@@ -53,15 +53,33 @@
               </svg>
               <span>(31) 99636-9696</span>
             </a>
+
+            <!-- CNPJ -->
+            <div class="cnpj-info">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M11,16.5L6.5,12L7.91,10.59L11,13.67L16.59,8.09L18,9.5L11,16.5Z"/>
+              </svg>
+              <span>CNPJ: 59.113.343/0001-05</span>
+            </div>
           </div>
         </div>
+      </div>
+      
+      <!-- Copyright -->
+      <div class="copyright-section">
+        <p class="copyright-text">
+          © {{ currentYear }} M2S Tech Solutions. Todos os direitos reservados.
+        </p>
       </div>
     </div>
   </section>
 </template>
 
 <script setup>
-// Componente de Contato
+import { computed } from 'vue'
+
+// Ano atual para o copyright
+const currentYear = computed(() => new Date().getFullYear())
 </script>
 
 <style scoped>
@@ -163,6 +181,41 @@
   font-size: 1.1rem;
 }
 
+.cnpj-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: #d6d6d6;
+  font-weight: 500;
+  justify-content: flex-start;
+  opacity: 0.9;
+}
+
+.cnpj-info svg {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  color: #ff8c00;
+}
+
+.cnpj-info span {
+  font-size: 1.1rem;
+}
+
+.copyright-section {
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid #545454;
+  text-align: center;
+}
+
+.copyright-text {
+  color: #d6d6d6;
+  font-size: 0.9rem;
+  margin: 0;
+  opacity: 0.7;
+}
+
 /* Responsividade */
 @media (max-width: 1024px) {
   .contato-content {
@@ -206,6 +259,10 @@
   .social-link {
     justify-content: center;
   }
+  
+  .cnpj-info {
+    justify-content: center;
+  }
 }
 
 @media (max-width: 480px) {
@@ -213,12 +270,24 @@
     justify-content: center;
   }
   
+  .cnpj-info {
+    justify-content: center;
+  }
+  
   .social-link span {
+    font-size: 1rem;
+  }
+  
+  .cnpj-info span {
     font-size: 1rem;
   }
   
   .contato-description {
     font-size: 1rem;
+  }
+  
+  .copyright-section {
+    margin-top: 2rem;
   }
 }
 </style>
