@@ -211,7 +211,7 @@
             <br>Não é necessário cadastro de cartão de crédito.
           </p>
           <a 
-              href="#file:NF_Tracker.rar" 
+            href="/downloads/NF_Tracker.rar" 
             class="download-button"
             download
           >
