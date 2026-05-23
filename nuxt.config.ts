@@ -20,7 +20,7 @@ export default defineNuxtConfig({
       ],
       script: [
         {
-          src: 'https://www.googletagmanager.com/gtag/js?id=G-70K83WEHD5',
+          src: 'https://www.googletagmanager.com/gtag/js?id=AW-11533926606',
           async: true
         },
         {
@@ -28,7 +28,7 @@ export default defineNuxtConfig({
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'G-70K83WEHD5');
+            gtag('config', 'AW-11533926606');
           `,
           type: 'text/javascript'
         },
