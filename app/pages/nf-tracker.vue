@@ -187,6 +187,7 @@
             target="_blank" 
             class="video-link"
             rel="noopener noreferrer"
+            @click="handleVideoClick"
           >
             <img 
               src="https://img.youtube.com/vi/akl807ZVnL4/maxresdefault.jpg" 
@@ -214,6 +215,7 @@
             href="/downloads/NF_Tracker.rar" 
             class="download-button"
             download
+            @click="handleDownloadClick"
           >
             Baixar Versão de Avaliação
           </a>
@@ -248,6 +250,7 @@
             class="subscribe-button"
             target="_blank"
             rel="noopener noreferrer"
+            @click="handleSubscribeClick"
           >
             Assinar Agora
           </a>
@@ -324,6 +327,76 @@ useHead({
     }
   ]
 })
+
+// Função de conversão do Google Ads
+const gtag_report_conversion = (url, conversionLabel = '') => {
+  const callback = function () {
+    if (typeof(url) != 'undefined') {
+      window.location = url
+    }
+  }
+  
+  if (typeof window !== 'undefined' && typeof window.gtag !== 'undefined') {
+    window.gtag('event', 'conversion', {
+      'send_to': 'AW-11533926606/EQhhCIKti4EaEM6B5_sq',
+      'event_callback': callback,
+      'event_label': conversionLabel
+    })
+  } else {
+    callback()
+  }
+  
+  return false
+}
+
+// Rastreamento de clique no vídeo
+const handleVideoClick = (event) => {
+  event.preventDefault()
+  const url = event.currentTarget.href
+  
+  // Registra a conversão com label específico
+  gtag_report_conversion(url, 'video_youtube_click')
+  
+  // Pequeno delay para garantir o envio
+  setTimeout(() => {
+    window.open(url, '_blank', 'noopener,noreferrer')
+  }, 300)
+}
+
+// Rastreamento de download
+const handleDownloadClick = (event) => {
+  event.preventDefault()
+  const url = event.currentTarget.href
+  
+  // Registra a conversão com label específico
+  if (typeof window !== 'undefined' && typeof window.gtag !== 'undefined') {
+    window.gtag('event', 'conversion', {
+      'send_to': 'AW-11533926606/EQhhCIKti4EaEM6B5_sq',
+      'event_label': 'download_avaliacao',
+      'event_callback': () => {
+        window.location = url
+      }
+    })
+  } else {
+    window.location = url
+  }
+  
+  return false
+}
+
+// Rastreamento de assinatura
+const handleSubscribeClick = (event) => {
+  event.preventDefault()
+  const url = event.currentTarget.href
+  
+  // Registra a conversão com label específico
+  gtag_report_conversion(url, 'assinar_hotmart')
+  
+  // Pequeno delay para garantir o envio
+  setTimeout(() => {
+    window.open(url, '_blank', 'noopener,noreferrer')
+  }, 300)
+}
 </script>
 
 <style scoped>
