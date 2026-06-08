@@ -183,14 +183,14 @@
         
         <div class="video-container">
           <a 
-            href="https://www.youtube.com/watch?v=akl807ZVnL4" 
+            href="https://www.youtube.com/watch?v=MrjpU0BxrCM" 
             target="_blank" 
             class="video-link"
             rel="noopener noreferrer"
             @click="handleVideoClick"
           >
             <img 
-              src="https://img.youtube.com/vi/akl807ZVnL4/maxresdefault.jpg" 
+              src="https://img.youtube.com/vi/MrjpU0BxrCM/maxresdefault.jpg" 
               alt="Vídeo demonstrativo NF Tracker"
               class="video-thumbnail"
             >
