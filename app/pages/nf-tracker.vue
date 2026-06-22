@@ -1,24 +1,71 @@
 <template>
   <div class="nf-tracker-page">
-    <Header />
-    
     <!-- Hero Section -->
     <section class="hero-nft">
       <div class="container-m2s">
         <div class="hero-content-nft">
-          <div class="logo-container">
+          <div class="logo-title-container">
             <img 
               src="/images/nf_tracker_Logo.png" 
               alt="NF Tracker Logo" 
               class="nft-logo"
             >
+            <h1 class="hero-title-nft">NF Tracker</h1>
           </div>
-          <h1 class="hero-title-nft">NF Tracker</h1>
-          <p class="hero-subtitle-nft">Gestão Inteligente de Notas Fiscais Eletrônicas</p>
+          <p class="hero-subtitle-nft">Baixe XML de NFSe em lote direto da API Oficial NFSe.gov.br</p>
           <p class="hero-description">
-            Automatize o processo de download, organização e gestão de suas Notas Fiscais de Serviço Eletrônicas (NFSe). 
-            Solução profissional que elimina trabalho manual e aumenta a eficiência operacional.
+            XML, Excel e eventos em poucos cliques. Sem extensões e sem depender do Portal do Contribuinte. Teste grátis por 7 dias • Sem cartão de crédito •
           </p>
+          
+          <a 
+            href="/downloads/NF_Tracker.rar" 
+            class="hero-cta-button"
+            download
+            @click="handleDownloadClick"
+          >
+            Baixar Teste Grátis Agora
+          </a>
+          
+          <div class="hero-pricing-highlight">
+            <div class="pricing-tag">
+              <span class="trial-badge">🎁 Teste Grátis por 7 Dias</span>
+              <p class="old-launch-price">De <span style="text-decoration: line-through;">R$ 49,90/mês</span> por apenas:</p>
+              <div class="price-hero">
+                <span class="amount">R$ 20</span>
+                <span class="period">/mês</span>
+              </div>
+              <p class="launch-promo">Promoção de lançamento.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Video Section -->
+    <section class="video-section">
+      <div class="container-m2s">
+        <h2 class="section-title">Demonstração em Vídeo</h2>
+        <p class="video-description">
+          Veja como baixar XML e gerar Excel automaticamente.
+        </p>
+        
+        <div class="video-container">
+          <a 
+            href="https://www.youtube.com/watch?v=MrjpU0BxrCM" 
+            target="_blank" 
+            class="video-link"
+            rel="noopener noreferrer"
+            @click="handleVideoClick"
+          >
+            <img 
+              src="https://img.youtube.com/vi/MrjpU0BxrCM/maxresdefault.jpg" 
+              alt="Vídeo demonstrativo NF Tracker"
+              class="video-thumbnail"
+            >
+            <div class="play-button">
+              <div class="play-icon"></div>
+            </div>
+          </a>
         </div>
       </div>
     </section>
@@ -35,7 +82,7 @@
                 <path d="M5,20H19V18H5M19,9H15V3H9V9H5L12,16L19,9Z"/>
               </svg>
             </div>
-            <h3>Download Automático</h3>
+            <h3>Baixe centenas de NFSe em minutos</h3>
             <p>Obtenção automática de NFSe emitidas e recebidas diretamente do Portal do Contribuinte, eliminando processo manual.</p>
           </div>
           
@@ -45,8 +92,8 @@
                 <path d="M21.17 3.25Q21.5 3.25 21.76 3.5 22 3.74 22 4.08V19.92Q22 20.26 21.76 20.5 21.5 20.75 21.17 20.75H7.83Q7.5 20.75 7.24 20.5 7 20.26 7 19.92V17H2.83Q2.5 17 2.24 16.76 2 16.5 2 16.17V7.83Q2 7.5 2.24 7.24 2.5 7 2.83 7H7V4.08Q7 3.74 7.24 3.5 7.5 3.25 7.83 3.25M7 13.06L8.18 15.28H9.97L8 12.06L9.93 8.89H8.22L7.13 10.9L7.09 10.96L7.06 11.03Q6.8 10.5 6.5 9.96 6.25 9.43 5.97 8.89H4.16L6.05 12.08L4 15.28H5.78M13.88 19.5V17H8.25V19.5M13.88 15.75V12.63H12V15.75M13.88 11.38V8.25H12V11.38M13.88 7V4.5H8.25V7M20.75 19.5V17H15.13V19.5M20.75 15.75V12.63H15.13V15.75M20.75 11.38V8.25H15.13V11.38M20.75 7V4.5H15.13V7Z"/>
               </svg>
             </div>
-            <h3>Conversão para Excel</h3>
-            <p>Exportação automática em formato Excel, com dados estruturados prontos para análise contábil e auditoria.</p>
+            <h3>Gere planilhas prontas para auditoria e contabilidade</h3>
+            <p>Exportação automática em formato Excel, com dados estruturados e organizados, economizando horas de trabalho manual.</p>
           </div>
           
           <div class="feature-card">
@@ -55,8 +102,8 @@
                 <path d="M12,15.5A3.5,3.5 0 0,1 8.5,12A3.5,3.5 0 0,1 12,8.5A3.5,3.5 0 0,1 15.5,12A3.5,3.5 0 0,1 12,15.5M19.43,12.97C19.47,12.65 19.5,12.33 19.5,12C19.5,11.67 19.47,11.34 19.43,11L21.54,9.37C21.73,9.22 21.78,8.95 21.66,8.73L19.66,5.27C19.54,5.05 19.27,4.96 19.05,5.05L16.56,6.05C16.04,5.66 15.5,5.32 14.87,5.07L14.5,2.42C14.46,2.18 14.25,2 14,2H10C9.75,2 9.54,2.18 9.5,2.42L9.13,5.07C8.5,5.32 7.96,5.66 7.44,6.05L4.95,5.05C4.73,4.96 4.46,5.05 4.34,5.27L2.34,8.73C2.21,8.95 2.27,9.22 2.46,9.37L4.57,11C4.53,11.34 4.5,11.67 4.5,12C4.5,12.33 4.53,12.65 4.57,12.97L2.46,14.63C2.27,14.78 2.21,15.05 2.34,15.27L4.34,18.73C4.46,18.95 4.73,19.03 4.95,18.95L7.44,17.94C7.96,18.34 8.5,18.68 9.13,18.93L9.5,21.58C9.54,21.82 9.75,22 10,22H14C14.25,22 14.46,21.82 14.5,21.58L14.87,18.93C15.5,18.67 16.04,18.34 16.56,17.94L19.05,18.95C19.27,19.03 19.54,18.95 19.66,18.73L21.66,15.27C21.78,15.05 21.73,14.78 21.54,14.63L19.43,12.97Z"/>
               </svg>
             </div>
-            <h3>Interface Profissional</h3>
-            <p>Sistema intuitivo com interface moderna, desenvolvida para facilitar a operação e maximizar produtividade.</p>
+            <h3>Interface Simples e Intuitiva</h3>
+            <p>Sistema fácil de usar, sem complicações. Qualquer pessoa opera, sem necessidade de treinamento técnico.</p>
           </div>
         </div>
       </div>
@@ -172,44 +219,14 @@
       </div>
     </section>
 
-    <!-- Video Section -->
-    <section class="video-section">
-      <div class="container-m2s">
-        <h2 class="section-title">Demonstração em Vídeo</h2>
-        <p class="video-description">
-          Confira o passo a passo completo do processo de extração de notas fiscais 
-          diretamente do Portal do Contribuinte.
-        </p>
-        
-        <div class="video-container">
-          <a 
-            href="https://www.youtube.com/watch?v=MrjpU0BxrCM" 
-            target="_blank" 
-            class="video-link"
-            rel="noopener noreferrer"
-            @click="handleVideoClick"
-          >
-            <img 
-              src="https://img.youtube.com/vi/MrjpU0BxrCM/maxresdefault.jpg" 
-              alt="Vídeo demonstrativo NF Tracker"
-              class="video-thumbnail"
-            >
-            <div class="play-button">
-              <div class="play-icon"></div>
-            </div>
-          </a>
-        </div>
-      </div>
-    </section>
-
     <!-- Trial Section -->
     <section class="trial-section">
       <div class="container-m2s">
         <div class="trial-card">
-          <h2>Período de Avaliação Gratuito</h2>
+          <h2>Comece Agora - Sem Riscos!</h2>
           <p>
-            Teste todas as funcionalidades do sistema por 7 dias, sem compromisso.
-            <br>Não é necessário cadastro de cartão de crédito.
+            Teste todas as funcionalidades do sistema por 7 dias, completamente grátis.
+            <br><strong>Sem cartão de crédito. Sem compromisso. Cancele quando quiser.</strong>
           </p>
           <a 
             href="/downloads/NF_Tracker.rar" 
@@ -217,8 +234,9 @@
             download
             @click="handleDownloadClick"
           >
-            Baixar Versão de Avaliação
+            🚀 Baixar Versão de Avaliação
           </a>
+          <p class="money-guarantee">💰 Apenas R$ 20/mês após o teste grátis</p>
         </div>
       </div>
     </section>
@@ -301,9 +319,9 @@
           </div>
         </div>
         <div class="company-info">
-          <p><strong>M2S Tech Solutions</strong></p>
-          <p>Soluções em Automação e Gestão Empresarial</p>
-          <p class="copyright">© 2026 M2S Tech Solutions. Todos os direitos reservados.</p>
+          <p><strong>M2S Tech Ltda</strong></p>
+          <p>59.113.343/0001-05</p>
+          <p class="copyright">© 2026 M2S Tech Ltda. Todos os direitos reservados.</p>
         </div>
       </div>
     </section>
@@ -415,6 +433,20 @@ const handleSubscribeClick = (event) => {
 }
 </script>
 
+<style>
+/* Estilos globais para remover tarja preta do topo */
+body {
+  margin: 0 !important;
+  padding: 0 !important;
+  background: #f5f5f5 !important;
+}
+
+html {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+</style>
+
 <style scoped>
 /* Cores da Bandeira do Brasil */
 :root {
@@ -428,12 +460,16 @@ const handleSubscribeClick = (event) => {
 .nf-tracker-page {
   background: #f5f5f5;
   min-height: 100vh;
+  padding-top: 0;
+  margin-top: 0;
+  position: relative;
+  top: 0;
 }
 
 /* Hero Section */
 .hero-nft {
   background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
-  padding: 6rem 0 4rem;
+  padding: 4rem 0 4rem;
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -471,12 +507,16 @@ const handleSubscribeClick = (event) => {
   padding: 2rem;
 }
 
-.logo-container {
-  margin-bottom: 2rem;
+.logo-title-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .nft-logo {
-  max-width: 320px;
+  max-width: 120px;
   height: auto;
   filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.15));
 }
@@ -485,7 +525,7 @@ const handleSubscribeClick = (event) => {
   font-size: clamp(2.5rem, 5vw, 4.5rem);
   font-weight: 700;
   color: #1a1a1a;
-  margin-bottom: 1rem;
+  margin-bottom: 0;
   letter-spacing: -0.5px;
 }
 
@@ -497,11 +537,151 @@ const handleSubscribeClick = (event) => {
 }
 
 .hero-description {
-  font-size: 1.1rem;
+  font-size: 1.32rem;
   color: #333333;
   line-height: 1.7;
   max-width: 750px;
-  margin: 0 auto;
+  margin: 0 auto 2rem;
+}
+
+.hero-pricing-highlight {
+  margin: 2.5rem auto;
+  max-width: 500px;
+}
+
+.pricing-tag {
+  background: linear-gradient(135deg, #ffffff 0%, #f8f8f8 100%);
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0, 155, 58, 0.25);
+  border: 3px solid var(--brasil-verde);
+  position: relative;
+  overflow: hidden;
+}
+
+.pricing-tag::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: linear-gradient(90deg, var(--brasil-verde) 0%, var(--brasil-amarelo) 50%, var(--brasil-azul) 100%);
+}
+
+.trial-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--brasil-amarelo) 0%, #ffd700 100%);
+  color: #000000;
+  padding: 0.6rem 1.5rem;
+  border-radius: 25px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 15px rgba(255, 223, 0, 0.4);
+  border: 2px solid var(--brasil-verde);
+}
+
+.price-hero {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+
+.price-hero .currency {
+  font-size: 1.2rem;
+  color: #000000;
+  font-weight: 600;
+}
+
+.price-hero .amount {
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: #000000;
+  text-shadow: none;
+}
+
+.price-hero .period {
+  font-size: 1.5rem;
+  color: #000000;
+  font-weight: 600;
+}
+
+.after-trial {
+  font-size: 0.95rem;
+  color: #555;
+  margin: 0.5rem 0 0;
+  font-style: italic;
+}
+
+.old-launch-price {
+  font-size: 1.05rem;
+  color: #3a3a3a;
+  font-weight: 600;
+  margin: 0.25rem 0 0.75rem;
+}
+
+.launch-promo {
+  font-size: 0.98rem;
+  color: #3a3a3a;
+  font-weight: 600;
+  margin: 0.75rem 0 0;
+}
+
+.hero-cta-button {
+  display: inline-block;
+  background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%);
+  color: #ffffff;
+  padding: 1.5rem 4rem;
+  font-size: 1.3rem;
+  font-weight: 800;
+  text-decoration: none;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 30px rgba(255, 0, 0, 0.5);
+  border: 3px solid #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 1.5rem;
+  position: relative;
+  overflow: hidden;
+  animation: pulse-cta 2s ease-in-out infinite;
+}
+
+.hero-cta-button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.hero-cta-button:hover::before {
+  width: 400px;
+  height: 400px;
+}
+
+.hero-cta-button:hover {
+  transform: translateY(-5px) scale(1.08);
+  box-shadow: 0 15px 45px rgba(255, 0, 0, 0.7);
+  background: linear-gradient(135deg, #ff3333 0%, #ff0000 100%);
+  border-color: var(--brasil-amarelo);
+}
+
+@keyframes pulse-cta {
+  0%, 100% {
+    box-shadow: 0 10px 30px rgba(255, 0, 0, 0.5);
+  }
+  50% {
+    box-shadow: 0 10px 40px rgba(255, 0, 0, 0.8);
+  }
 }
 
 /* Section Styles */
@@ -929,25 +1109,66 @@ const handleSubscribeClick = (event) => {
   line-height: 1.7;
 }
 
+.money-guarantee {
+  font-size: 1.2rem;
+  color: var(--brasil-verde);
+  font-weight: 700;
+  margin-top: 1.5rem !important;
+  margin-bottom: 0 !important;
+}
+
 .download-button {
   display: inline-block;
-  background: linear-gradient(135deg, var(--brasil-amarelo) 0%, #ffd700 100%);
-  color: #1a1a1a;
-  padding: 1.2rem 3rem;
-  font-size: 1.15rem;
-  font-weight: 700;
+  background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%);
+  color: #ffffff;
+  padding: 1.4rem 3.5rem;
+  font-size: 1.25rem;
+  font-weight: 800;
   text-decoration: none;
   border-radius: 50px;
   transition: all 0.3s ease;
-  box-shadow: 0 6px 20px rgba(255, 223, 0, 0.4);
-  border: 3px solid var(--brasil-verde);
+  box-shadow: 0 8px 25px rgba(255, 0, 0, 0.5);
+  border: 3px solid #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.download-button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.download-button:hover::before {
+  width: 300px;
+  height: 300px;
 }
 
 .download-button:hover {
-  transform: translateY(-3px) scale(1.05);
-  box-shadow: 0 10px 30px rgba(255, 223, 0, 0.6);
-  background: var(--brasil-verde);
-  color: #1a1a1a;
+  transform: translateY(-5px) scale(1.08);
+  box-shadow: 0 12px 40px rgba(255, 0, 0, 0.7);
+  background: linear-gradient(135deg, #ff3333 0%, #ff0000 100%);
+  color: #ffffff;
+  border-color: #ffdd00;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 8px 25px rgba(255, 0, 0, 0.5);
+  }
+  50% {
+    box-shadow: 0 8px 35px rgba(255, 0, 0, 0.8);
+  }
 }
 
 /* Pricing Section */
@@ -1320,6 +1541,15 @@ const handleSubscribeClick = (event) => {
 
   .hero-subtitle-nft {
     font-size: 1.2rem;
+  }
+  
+  .price-hero .amount {
+    font-size: 2.5rem;
+  }
+  
+  .hero-cta-button {
+    padding: 1.2rem 2.5rem;
+    font-size: 1.1rem;
   }
 
   .section-title {
