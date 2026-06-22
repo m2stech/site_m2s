@@ -325,6 +325,22 @@ useHead({
       name: 'keywords',
       content: 'NF Tracker, notas fiscais, NFSe, automação, gestão fiscal, contabilidade'
     }
+  ],
+  script: [
+    {
+      src: 'https://www.googletagmanager.com/gtag/js?id=G-4TBXK1FW1H',
+      async: true
+    },
+    {
+      innerHTML: `
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-4TBXK1FW1H');
+        gtag('config', 'AW-11533926606');
+      `,
+      type: 'text/javascript'
+    }
   ]
 })
 
