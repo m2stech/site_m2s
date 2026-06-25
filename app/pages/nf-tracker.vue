@@ -106,7 +106,7 @@
         <div class="interface-mockup">
           <div class="notebook-frame">
             <img 
-              src="/images/interface.png" 
+              src="/images/interface.PNG" 
               alt="Interface do NF Tracker mostrando seleção de certificado, download automático e conversão para Excel"
               class="interface-image"
               loading="lazy"
