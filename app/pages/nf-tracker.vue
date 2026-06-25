@@ -295,7 +295,7 @@
           </a>
           
           <a 
-            href="https://wa.me/5531989509929?text=Olá!%20Gostaria%20de%20solicitar%20uma%20demonstração%20do%20NF%20Tracker" 
+            href="https://wa.me/5531989509929" 
             class="demo-button whatsapp-button"
             target="_blank"
             rel="noopener noreferrer"
