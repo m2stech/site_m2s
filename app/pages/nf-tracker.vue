@@ -16,7 +16,9 @@
           <p class="hero-description">
             XML, Excel e eventos em poucos cliques. Sem extensões e sem depender do Portal do Contribuinte. Teste grátis por 7 dias • Sem cartão de crédito •
           </p>
-          
+          <p class="hero-description">
+            Dúvidas? E-mail: suporte@m2stech.com.br - WhatsApp: +55 (31) 98950-9929
+          </p>
           <a 
             href="/downloads/NF_Tracker.rar" 
             class="hero-cta-button"
