@@ -34,8 +34,8 @@ export default defineNuxtConfig({
       htmlAttrs: {
         lang: 'pt-BR',
       },
-      title: 'M2S Tech Ltda | BI, Automações e Sistemas para Turismo',
-      titleTemplate: '%s',
+      title: 'M2S Tech Ltda',
+      titleTemplate: '%s | M2S Tech',
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -89,7 +89,7 @@ export default defineNuxtConfig({
           innerHTML: JSON.stringify({
             '@context': 'https://schema.org',
             '@type': 'Organization',
-            name: 'M2S Tech Ltda',
+            name: 'M2S Tech',
             url: 'https://www.m2stech.tur.br/',
             logo: 'https://www.m2stech.tur.br/images/favicon.png',
             sameAs: [

@@ -596,61 +596,28 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
 
-// Meta tags e SEO otimizado
+// SEO Meta Tags
+useSeoMeta({
+  title: 'Baixar XML de NFSe em Lote | NF Tracker',
+  description: 'Baixe XML de NFSe emitidas e recebidas diretamente da API Oficial do Governo Federal. Converta automaticamente para Excel com poucos cliques.',
+  keywords: 'NF Tracker, NFSe, notas fiscais eletrônicas, automação fiscal, download XML, planilha Excel, certificado digital A1 A3, contabilidade',
+  ogTitle: 'NF Tracker - Download de XML de NFSe',
+  ogDescription: 'Baixe XML de NFSe em lote e converta para Excel utilizando a API oficial do Governo Federal.',
+  ogImage: 'https://www.m2stech.tur.br/images/og-nf-tracker.png',
+  ogUrl: 'https://www.m2stech.tur.br/nf-tracker/',
+  ogType: 'website',
+  twitterCard: 'summary_large_image',
+  twitterTitle: 'NF Tracker - Download de XML de NFSe',
+  twitterDescription: 'Baixe XML de NFSe em lote e converta para Excel automaticamente.',
+  twitterImage: 'https://www.m2stech.tur.br/images/og-nf-tracker.png',
+})
+
+// Head Configuration - Canonical, Analytics e Schema.org
 useHead({
-  title: 'NF Tracker - Automação de NFSe | Download Automático de Notas Fiscais',
-  meta: [
-    {
-      name: 'description',
-      content: 'Economize horas baixando centenas de NFSe automaticamente. Download de XML, eventos e Excel direto da plataforma oficial. Teste grátis 7 dias. R$ 20/mês.'
-    },
-    {
-      name: 'keywords',
-      content: 'NF Tracker, NFSe, notas fiscais eletrônicas, automação fiscal, download XML, planilha Excel, certificado digital A1 A3, contabilidade'
-    },
-    // Open Graph
-    {
-      property: 'og:title',
-      content: 'NF Tracker - Automação de NFSe | Download Automático'
-    },
-    {
-      property: 'og:description',
-      content: 'Economize horas baixando centenas de NFSe automaticamente. Teste grátis 7 dias.'
-    },
-    {
-      property: 'og:type',
-      content: 'website'
-    },
-    {
-      property: 'og:url',
-      content: 'https://www.m2stech.tur.br/nf-tracker'
-    },
-    {
-      property: 'og:image',
-      content: 'https://www.m2stech.tur.br/images/nf_tracker_Logo.png'
-    },
-    // Twitter Cards
-    {
-      name: 'twitter:card',
-      content: 'summary_large_image'
-    },
-    {
-      name: 'twitter:title',
-      content: 'NF Tracker - Automação de NFSe'
-    },
-    {
-      name: 'twitter:description',
-      content: 'Economize horas baixando centenas de NFSe automaticamente.'
-    },
-    {
-      name: 'twitter:image',
-      content: 'https://www.m2stech.tur.br/images/nf_tracker_Logo.png'
-    }
-  ],
   link: [
     {
       rel: 'canonical',
-      href: 'https://www.m2stech.tur.br/nf-tracker'
+      href: 'https://www.m2stech.tur.br/nf-tracker/'
     }
   ],
   script: [
@@ -683,11 +650,7 @@ useHead({
           "priceCurrency": "BRL",
           "priceValidUntil": "2027-12-31"
         },
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": "4.8",
-          "ratingCount": "50"
-        }
+        
       })
     },
     // FAQ Schema
@@ -721,14 +684,7 @@ useHead({
               "text": "Sim! O NF Tracker funciona perfeitamente com certificados digitais A1."
             }
           },
-          {
-            "@type": "Question",
-            "name": "Funciona com A3?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Sim! Também é totalmente compatível com certificados digitais A3 em token ou cartão."
-            }
-          },
+          
           {
             "@type": "Question",
             "name": "Preciso acessar o Portal do Contribuinte?",
