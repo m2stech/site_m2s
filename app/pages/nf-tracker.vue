@@ -10,9 +10,9 @@
               alt="NF Tracker - Sistema de automação de Notas Fiscais de Serviço" 
               class="nft-logo"
             >
-            <h1 class="hero-title-nft">NF Tracker</h1>
+            <h1 class="hero-title-nft">Baixe XML de NFSe em lote e gere Excel automaticamente</h1>
           </div>
-          <h2 class="hero-main-headline">Economize horas todo mês baixando centenas de NFSe automaticamente</h2>
+          <h2 class="hero-main-headline">Economize tempo baixando milhares de XML automaticamente</h2>
           <p class="hero-subtitle">Download automático de XML, eventos e planilhas Excel diretamente da plataforma oficial do Governo Federal.</p>
           
           <a 
