@@ -642,15 +642,51 @@ useHead({
         "@context": "https://schema.org",
         "@type": "SoftwareApplication",
         "name": "NF Tracker",
-        "operatingSystem": "Windows",
+        "alternateName": "NF Tracker para NFSe",
         "applicationCategory": "BusinessApplication",
+        "applicationSubCategory": "Fiscal Software",
+        "operatingSystem": "Windows 10, Windows 11",
+        "softwareVersion": "2.0",
+        "description": "Software para download automático de XML de NFSe emitidas e recebidas diretamente da API Oficial da Plataforma Nacional da NFS-e. Exporta automaticamente para Excel.",
+        "url": "https://www.m2stech.tur.br/nf-tracker/",
+        "downloadUrl": "https://www.m2stech.tur.br/downloads/NF_Tracker.rar",
+        "image": "https://www.m2stech.tur.br/images/og-nf-tracker.png",
+        "screenshot": "https://www.m2stech.tur.br/images/interface.png",
+        "keywords": ["NFSe", "XML", "Nota Fiscal de Serviço", "Excel", "API NFSe", "Certificado Digital", "Download XML"],
+        "featureList": [
+          "Download automático de XML",
+          "Download de eventos",
+          "Conversão automática para Excel",
+          "Compatível com certificados A1",
+          "Compatível com certificados A3",
+          "Integração com API Oficial da Plataforma Nacional da NFS-e",
+          "Processamento em lote",
+          "Exportação para Excel",
+          "Atualizações automáticas"
+        ],
         "offers": {
           "@type": "Offer",
           "price": "20.00",
           "priceCurrency": "BRL",
-          "priceValidUntil": "2027-12-31"
+          "availability": "https://schema.org/InStock",
+          "priceValidUntil": "2027-12-31",
+          "url": "https://www.m2stech.tur.br/nf-tracker/"
         },
-        
+        "creator": {
+          "@type": "Organization",
+          "name": "M2S Tech",
+          "url": "https://www.m2stech.tur.br"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "M2S Tech"
+        },
+        "supportingData": {
+          "@type": "ContactPoint",
+          "contactType": "customer support",
+          "email": "suporte@m2stech.com.br",
+          "telephone": "+55-31-98950-9929"
+        }
       })
     },
     // FAQ Schema
@@ -684,7 +720,7 @@ useHead({
               "text": "Sim! O NF Tracker funciona perfeitamente com certificados digitais A1."
             }
           },
-          
+
           {
             "@type": "Question",
             "name": "Preciso acessar o Portal do Contribuinte?",
