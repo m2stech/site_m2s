@@ -2,15 +2,38 @@
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
-  modules: ['@nuxtjs/tailwindcss'],
+  modules: ['@nuxtjs/tailwindcss', '@nuxtjs/sitemap'],
+
+  site: {
+    url: 'https://www.m2stech.tur.br',
+    name: 'M2S Tech Ltda',
+  },
+
+  sitemap: {
+    strictNuxtContentPaths: false,
+    urls: [
+      {
+        loc: '/',
+        lastmod: new Date().toISOString().split('T')[0],
+        changefreq: 'weekly',
+        priority: 1.0,
+      },
+      {
+        loc: '/nf-tracker',
+        lastmod: new Date().toISOString().split('T')[0],
+        changefreq: 'monthly',
+        priority: 0.8,
+      },
+    ],
+  },
   css: ['~/assets/css/main.css'],
   app: {
     head: {
-      title: 'M2S Tech Solutions',
+      title: 'M2S Tech Ltda',
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        { name: 'description', content: 'M2S Tech Solutions - Soluções tecnológicas inovadoras' }
+        { name: 'description', content: 'M2S Tech Ltda - Soluções tecnológicas inovadoras' }
       ],
       link: [
         { rel: 'icon', type: 'image/png', href: '/images/favicon.png' },

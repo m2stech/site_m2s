@@ -1,2 +1,4 @@
 User-Agent: *
 Disallow:
+
+Sitemap: https://www.m2stech.tur.br/sitemap.xml
