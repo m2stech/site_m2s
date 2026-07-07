@@ -589,6 +589,52 @@
       </div>
     </section>
 
+    <!-- Download Email Gate Modal -->
+    <div v-if="showDownloadModal" class="download-modal-overlay" @click.self="closeDownloadModal">
+      <div class="download-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <button class="modal-close-btn" @click="closeDownloadModal" aria-label="Fechar">✕</button>
+
+        <!-- Step 1: Email form -->
+        <template v-if="!downloadReady">
+          <div class="modal-icon-wrap">📥</div>
+          <h3 id="modal-title" class="modal-title">Quase lá! Informe seu e-mail</h3>
+          <p class="modal-subtitle">Para liberar o download e receber atualizações importantes do NF Tracker.</p>
+          <input
+            v-model="downloadEmail"
+            type="email"
+            placeholder="seu@email.com"
+            class="modal-email-input"
+            :disabled="isSubmitting"
+            @keyup.enter="submitDownloadEmail"
+          />
+          <p v-if="emailError" class="modal-error">{{ emailError }}</p>
+          <button
+            class="modal-submit-btn"
+            :disabled="isSubmitting"
+            @click="submitDownloadEmail"
+          >
+            {{ isSubmitting ? 'Aguarde...' : 'Liberar Download' }}
+          </button>
+          <p class="modal-privacy">🔒 Não enviamos spam. Apenas atualizações importantes.</p>
+        </template>
+
+        <!-- Step 2: Download ready -->
+        <template v-else>
+          <div class="modal-icon-wrap">✅</div>
+          <h3 class="modal-title">Download liberado!</h3>
+          <p class="modal-subtitle">Clique no botão abaixo para baixar o NF Tracker gratuitamente.</p>
+          <a
+            :href="downloadFileUrl"
+            class="modal-download-btn"
+            download
+            @click="closeDownloadModal"
+          >
+            ⬇️ Baixar NF Tracker
+          </a>
+        </template>
+      </div>
+    </div>
+
     <WhatsAppFloat />
   </div>
 </template>
@@ -751,6 +797,67 @@ useHead({
   ]
 })
 
+// --- Download Email Gate ---
+const showDownloadModal = ref(false)
+const downloadEmail = ref('')
+const downloadSource = ref('')
+const downloadFileUrl = ref('')
+const isSubmitting = ref(false)
+const downloadReady = ref(false)
+const emailError = ref('')
+
+const validateEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+
+const openDownloadModal = (url, source) => {
+  downloadFileUrl.value = url
+  downloadSource.value = source
+  downloadReady.value = false
+  downloadEmail.value = ''
+  emailError.value = ''
+  showDownloadModal.value = true
+}
+
+const closeDownloadModal = () => {
+  showDownloadModal.value = false
+  downloadReady.value = false
+}
+
+const submitDownloadEmail = async () => {
+  if (!validateEmail(downloadEmail.value)) {
+    emailError.value = 'Por favor, insira um e-mail válido.'
+    return
+  }
+
+  isSubmitting.value = true
+  emailError.value = ''
+
+  try {
+    await $fetch('/api/nf-tracker-download', {
+      method: 'POST',
+      body: {
+        email: downloadEmail.value,
+        fileName: 'NF_Tracker.rar',
+        source: downloadSource.value,
+        userAgent: typeof navigator !== 'undefined' ? navigator.userAgent : null,
+      },
+    })
+
+    downloadReady.value = true
+
+    if (typeof window !== 'undefined' && typeof window.gtag !== 'undefined') {
+      window.gtag('event', 'conversion', {
+        send_to: 'AW-11533926606/EQhhCIKti4EaEM6B5_sq',
+        event_label: `download_${downloadSource.value}`,
+      })
+    }
+  } catch (err) {
+    emailError.value = 'Ocorreu um erro. Tente novamente.'
+    console.error('Download register error:', err)
+  } finally {
+    isSubmitting.value = false
+  }
+}
+
 // FAQ Data
 const faqs = ref([
   {
@@ -832,74 +939,22 @@ const handleVideoClick = (event) => {
   }, 300)
 }
 
-// Rastreamento de download (preservado + novos eventos)
+// Rastreamento de download — abre o modal de captura de e-mail
 const handleDownloadClick = (event) => {
   event.preventDefault()
-  const url = event.currentTarget.href
-  
-  if (typeof window !== 'undefined' && typeof window.gtag !== 'undefined') {
-    window.gtag('event', 'conversion', {
-      'send_to': 'AW-11533926606/EQhhCIKti4EaEM6B5_sq',
-      'event_label': 'download_avaliacao_hero',
-      'event_callback': () => {
-        window.location = url
-      }
-    })
-  } else {
-    window.location = url
-  }
-  
-  return false
+  openDownloadModal(event.currentTarget.href, 'hero')
 }
 
 // Novo: Rastreamento download CTA middle
 const handleDownloadClickMiddle = (event) => {
   event.preventDefault()
-  const url = event.currentTarget.href
-  
-  if (typeof window !== 'undefined' && typeof window.gtag !== 'undefined') {
-    window.gtag('event', 'conversion', {
-      'send_to': 'AW-11533926606/EQhhCIKti4EaEM6B5_sq',
-      'event_label': 'download_avaliacao_middle',
-      'event_callback': () => {
-        window.location = url
-      }
-    })
-    
-    window.gtag('event', 'cta_middle', {
-      'event_category': 'conversion',
-      'event_label': 'download_middle'
-    })
-  } else {
-    window.location = url
-  }
-  
-  return false
+  openDownloadModal(event.currentTarget.href, 'middle')
 }
 
 // Novo: Rastreamento download CTA bottom
 const handleDownloadClickBottom = (event) => {
   event.preventDefault()
-  const url = event.currentTarget.href
-  
-  if (typeof window !== 'undefined' && typeof window.gtag !== 'undefined') {
-    window.gtag('event', 'conversion', {
-      'send_to': 'AW-11533926606/EQhhCIKti4EaEM6B5_sq',
-      'event_label': 'download_avaliacao_bottom',
-      'event_callback': () => {
-        window.location = url
-      }
-    })
-    
-    window.gtag('event', 'cta_bottom', {
-      'event_category': 'conversion',
-      'event_label': 'download_bottom'
-    })
-  } else {
-    window.location = url
-  }
-  
-  return false
+  openDownloadModal(event.currentTarget.href, 'bottom')
 }
 
 // Rastreamento de assinatura (preservado)
@@ -2914,5 +2969,132 @@ html {
     font-size: 0.75rem;
     padding: 0.4rem 0.8rem;
   }
+}
+
+/* ── Download Email Gate Modal ─────────────────────────── */
+.download-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 1rem;
+}
+
+.download-modal {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 2.5rem 2rem;
+  max-width: 420px;
+  width: 100%;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.1rem;
+  cursor: pointer;
+  color: #888;
+  line-height: 1;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+.modal-close-btn:hover {
+  background: #f0f0f0;
+}
+
+.modal-icon-wrap {
+  font-size: 2.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.modal-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 0.5rem;
+}
+
+.modal-subtitle {
+  font-size: 0.95rem;
+  color: #555;
+  margin: 0 0 1.25rem;
+}
+
+.modal-email-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.2s;
+}
+.modal-email-input:focus {
+  border-color: #ff8c00;
+}
+.modal-email-input:disabled {
+  background: #f5f5f5;
+}
+
+.modal-error {
+  color: #e53e3e;
+  font-size: 0.85rem;
+  margin: 0.4rem 0 0;
+  text-align: left;
+}
+
+.modal-submit-btn {
+  display: block;
+  width: 100%;
+  margin-top: 1rem;
+  padding: 0.85rem;
+  background: #ff8c00;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s, opacity 0.2s;
+}
+.modal-submit-btn:hover:not(:disabled) {
+  background: #e67e00;
+}
+.modal-submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.modal-privacy {
+  font-size: 0.78rem;
+  color: #999;
+  margin: 0.75rem 0 0;
+}
+
+.modal-download-btn {
+  display: inline-block;
+  margin-top: 1.25rem;
+  padding: 0.85rem 2rem;
+  background: #22c55e;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+.modal-download-btn:hover {
+  background: #16a34a;
 }
 </style>

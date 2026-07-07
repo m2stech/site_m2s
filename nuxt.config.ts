@@ -4,6 +4,14 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: ['@nuxtjs/tailwindcss', '@nuxtjs/sitemap'],
 
+  runtimeConfig: {
+    supabaseServiceRoleKey: '',
+    public: {
+      supabaseUrl: '',
+      supabaseAnonKey: '',
+    },
+  },
+
   site: {
     url: 'https://www.m2stech.tur.br',
     name: 'M2S Tech Ltda',
