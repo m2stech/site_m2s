@@ -22,11 +22,27 @@ export default defineEventHandler(async (event) => {
   }
 
   const config = useRuntimeConfig()
-  if (!config.public.supabaseUrl || !config.supabaseServiceRoleKey) {
+  const supabaseUrl =
+    config.public.supabaseUrl || process.env.NUXT_PUBLIC_SUPABASE_URL || process.env.SUPABASE_URL || ''
+  const supabaseServiceRoleKey =
+    config.supabaseServiceRoleKey ||
+    process.env.NUXT_SUPABASE_SERVICE_ROLE_KEY ||
+    process.env.SUPABASE_SERVICE_ROLE_KEY ||
+    ''
+
+  if (!supabaseUrl || !supabaseServiceRoleKey) {
+    console.error('Missing Supabase env in server runtime', {
+      hasRuntimePublicUrl: Boolean(config.public.supabaseUrl),
+      hasRuntimeServiceKey: Boolean(config.supabaseServiceRoleKey),
+      hasEnvNuxtPublicUrl: Boolean(process.env.NUXT_PUBLIC_SUPABASE_URL),
+      hasEnvSupabaseUrl: Boolean(process.env.SUPABASE_URL),
+      hasEnvNuxtServiceKey: Boolean(process.env.NUXT_SUPABASE_SERVICE_ROLE_KEY),
+      hasEnvSupabaseServiceKey: Boolean(process.env.SUPABASE_SERVICE_ROLE_KEY),
+    })
     throw createError({ statusCode: 500, statusMessage: 'Configuração Supabase ausente.' })
   }
 
-  const supabase = createClient(config.public.supabaseUrl, config.supabaseServiceRoleKey, {
+  const supabase = createClient(supabaseUrl, supabaseServiceRoleKey, {
     auth: {
       autoRefreshToken: false,
       persistSession: false,
