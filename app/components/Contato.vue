@@ -144,7 +144,7 @@
             <h3 class="text-sm font-semibold uppercase tracking-[0.2em] text-white/38">Contato</h3>
             <ul class="mt-4 space-y-3 text-sm text-white/68">
               <li>(31) 99636-9696</li>
-              <li>constato@m2stech.tur.br</li>
+              <li>contato@m2stech.tur.br</li>
               <li>Belo Horizonte - MG</li>
               <li>CNPJ: 59.113.343/0001-05</li>
             </ul>
@@ -211,7 +211,7 @@ const handleFormSubmit = () => {
 
 const contactItems = [
   { label: 'Telefone', value: '(31) 99636-9696', href: 'tel:+5531996369696', icon: Phone },
-  { label: 'Email', value: 'constato@m2stech.tur.br', href: 'mailto:constato@m2stech.tur.br', icon: Mail },
+  { label: 'Email', value: 'contato@m2stech.tur.br', href: 'mailto:contato@m2stech.tur.br', icon: Mail },
   { label: 'WhatsApp', value: 'Atendimento comercial', href: 'https://wa.me/5531996369696', icon: MessageCircle, external: true },
   { label: 'LinkedIn', value: 'M2S Tech no LinkedIn', href: 'https://www.linkedin.com/company/m2stech', icon: Users, external: true },
   { label: 'Instagram', value: '@m2stech', href: 'https://www.instagram.com/m2stech/', icon: Camera, external: true },
