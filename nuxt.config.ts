@@ -26,12 +26,6 @@ export default defineNuxtConfig({
         changefreq: 'weekly',
         priority: 1.0,
       },
-      {
-        loc: '/nf-tracker/',
-        lastmod: '2026-06-26',
-        changefreq: 'weekly',
-        priority: 0.9,
-      },
     ],
   },
 
@@ -42,7 +36,7 @@ export default defineNuxtConfig({
       htmlAttrs: {
         lang: 'pt-BR',
       },
-      title: 'M2S Tech Ltda',
+      title: 'M2S Tech | Consultoria em OBT, Business Intelligence e Sistemas para Turismo',
       titleTemplate: '%s | M2S Tech',
       meta: [
         { charset: 'utf-8' },
@@ -50,7 +44,7 @@ export default defineNuxtConfig({
         {
           name: 'description',
           content:
-            'M2S Tech desenvolve soluções de BI, automações, SaaS e sistemas web para empresas de turismo e negócios. Conheça o NF Tracker para baixar XML de NFSe em lote.',
+            'Consultoria em OBT (Wooba, Reserve, Tech Travel), Business Intelligence com Power BI, automações e desenvolvimento de sistemas para agências de viagens, operadoras, consolidadoras e empresas corporativas de turismo. M2S Tech Solutions — Belo Horizonte, MG.',
         },
         { name: 'robots', content: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' },
         { name: 'author', content: 'M2S Tech Ltda' },
@@ -58,12 +52,12 @@ export default defineNuxtConfig({
 
         { property: 'og:type', content: 'website' },
         { property: 'og:locale', content: 'pt_BR' },
-        { property: 'og:site_name', content: 'M2S Tech Ltda' },
-        { property: 'og:title', content: 'M2S Tech Ltda | BI, Automações e Sistemas para Turismo' },
+        { property: 'og:site_name', content: 'M2S Tech Solutions' },
+        { property: 'og:title', content: 'M2S Tech | Consultoria em OBT, Business Intelligence e Sistemas para Turismo' },
         {
           property: 'og:description',
           content:
-            'Soluções de BI, automações, SaaS e sistemas web. NF Tracker: baixe XML de NFSe em lote e converta para Excel.',
+            'Consultoria especializada em OBT (Wooba, Reserve, Tech Travel), Business Intelligence com Power BI e desenvolvimento de sistemas para o setor de turismo.',
         },
         { property: 'og:url', content: 'https://www.m2stech.tur.br/' },
         { property: 'og:image', content: 'https://www.m2stech.tur.br/images/og-m2s-tech.png' },
@@ -71,11 +65,11 @@ export default defineNuxtConfig({
         { property: 'og:image:height', content: '630' },
 
         { name: 'twitter:card', content: 'summary_large_image' },
-        { name: 'twitter:title', content: 'M2S Tech Ltda | BI, Automações e Sistemas para Turismo' },
+        { name: 'twitter:title', content: 'M2S Tech | Consultoria em OBT, Business Intelligence e Sistemas para Turismo' },
         {
           name: 'twitter:description',
           content:
-            'BI, automações, SaaS e sistemas web para empresas de turismo e negócios.',
+            'Consultoria especializada em OBT, Business Intelligence e desenvolvimento de sistemas para empresas de turismo.',
         },
         { name: 'twitter:image', content: 'https://www.m2stech.tur.br/images/og-m2s-tech.png' },
       ],
@@ -101,14 +95,53 @@ export default defineNuxtConfig({
             url: 'https://www.m2stech.tur.br/',
             logo: 'https://www.m2stech.tur.br/images/favicon.png',
             sameAs: [
-              'https://www.linkedin.com/company/m2s-tech',
-              'https://www.instagram.com/m2stech.tur',
+              'https://www.linkedin.com/company/m2stech',
+              'https://www.instagram.com/m2stech/',
               'https://www.youtube.com/@m2stech',
             ],
           }),
         },
         {
-          src: 'https://www.googletagmanager.com/gtag/js?id=AW-11533926606',
+          type: 'application/ld+json',
+          innerHTML: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'LocalBusiness',
+            '@id': 'https://www.m2stech.tur.br/#localbusiness',
+            name: 'M2S Tech Solutions',
+            description: 'Consultoria em OBT, Business Intelligence, automações e desenvolvimento de sistemas para empresas de turismo.',
+            url: 'https://www.m2stech.tur.br/',
+            telephone: '+55-31-99636-9696',
+            email: 'constato@m2stech.tur.br',
+            address: {
+              '@type': 'PostalAddress',
+              addressLocality: 'Belo Horizonte',
+              addressRegion: 'MG',
+              addressCountry: 'BR',
+            },
+            geo: {
+              '@type': 'GeoCoordinates',
+              latitude: -19.9167,
+              longitude: -43.9345,
+            },
+            areaServed: {
+              '@type': 'Country',
+              name: 'Brasil',
+            },
+            serviceType: [
+              'Consultoria em OBT',
+              'Business Intelligence',
+              'Desenvolvimento de Sistemas',
+              'Automações',
+            ],
+            priceRange: '$$',
+            sameAs: [
+              'https://www.linkedin.com/company/m2stech',
+              'https://www.instagram.com/m2stech/',
+            ],
+          }),
+        },
+        {
+          src: 'https://www.googletagmanager.com/gtag/js?id=G-4TBXK1FW1H',
           async: true,
         },
         {
@@ -116,6 +149,7 @@ export default defineNuxtConfig({
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
+            gtag('config', 'G-4TBXK1FW1H');
             gtag('config', 'AW-11533926606');
           `,
           type: 'text/javascript',
