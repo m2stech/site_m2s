@@ -1,3 +1,36 @@
+import { statSync } from 'node:fs'
+import { resolve } from 'node:path'
+import { fileURLToPath } from 'node:url'
+
+const buildLastmod = new Date().toISOString()
+const rootDir = fileURLToPath(new URL('.', import.meta.url))
+
+const getLastmod = (relativePath: string) => {
+  try {
+    return statSync(resolve(rootDir, relativePath)).mtime.toISOString()
+  } catch {
+    return buildLastmod
+  }
+}
+
+const routeSeoDefaults = {
+  '/': {
+    changefreq: 'daily' as const,
+    priority: 1.0 as const,
+    lastmod: getLastmod('app/pages/index.vue'),
+  },
+  '/nf-tracker': {
+    changefreq: 'weekly' as const,
+    priority: 0.9 as const,
+    lastmod: getLastmod('app/pages/nf-tracker.vue'),
+  },
+  '/nf-trackernew': {
+    changefreq: 'weekly' as const,
+    priority: 0.9 as const,
+    lastmod: getLastmod('app/pages/nf-trackernew.vue'),
+  },
+}
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
@@ -19,12 +52,40 @@ export default defineNuxtConfig({
 
   sitemap: {
     strictNuxtContentPaths: false,
+    includeAppSources: false,
+    exclude: [
+      '/api/**',
+      '/404',
+      '/admin/**',
+      '/_nuxt/**',
+      '/server/**',
+      '/dev/**',
+      '/test/**',
+      '/test-analytics.html',
+    ],
+    defaults: {
+      changefreq: 'monthly' as const,
+      priority: 0.7 as const,
+      lastmod: buildLastmod,
+    },
     urls: [
       {
         loc: '/',
-        lastmod: '2026-06-26',
-        changefreq: 'weekly',
-        priority: 1.0,
+        changefreq: routeSeoDefaults['/'].changefreq,
+        priority: routeSeoDefaults['/'].priority,
+        lastmod: routeSeoDefaults['/'].lastmod,
+      },
+      {
+        loc: '/nf-tracker',
+        changefreq: routeSeoDefaults['/nf-tracker'].changefreq,
+        priority: routeSeoDefaults['/nf-tracker'].priority,
+        lastmod: routeSeoDefaults['/nf-tracker'].lastmod,
+      },
+      {
+        loc: '/nf-trackernew',
+        changefreq: routeSeoDefaults['/nf-trackernew'].changefreq,
+        priority: routeSeoDefaults['/nf-trackernew'].priority,
+        lastmod: routeSeoDefaults['/nf-trackernew'].lastmod,
       },
     ],
   },

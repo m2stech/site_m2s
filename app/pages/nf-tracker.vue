@@ -650,7 +650,7 @@ useSeoMeta({
   ogTitle: 'NF Tracker - Download de XML de NFSe',
   ogDescription: 'Baixe XML de NFSe em lote e converta para Excel utilizando a API oficial do Governo Federal.',
   ogImage: 'https://www.m2stech.tur.br/images/og-nf-tracker.png',
-  ogUrl: 'https://www.m2stech.tur.br/nf-tracker/',
+  ogUrl: 'https://www.m2stech.tur.br/nf-tracker',
   ogType: 'website',
   twitterCard: 'summary_large_image',
   twitterTitle: 'NF Tracker - Download de XML de NFSe',
@@ -663,7 +663,7 @@ useHead({
   link: [
     {
       rel: 'canonical',
-      href: 'https://www.m2stech.tur.br/nf-tracker/'
+      href: 'https://www.m2stech.tur.br/nf-tracker'
     }
   ],
   script: [
