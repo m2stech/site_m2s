@@ -235,5 +235,6 @@ const socialLinks = [
   { label: 'WhatsApp', href: 'https://wa.me/5531996369696', image: '/images/whatapp.png' },
   { label: 'LinkedIn', href: 'https://www.linkedin.com/company/m2stech', image: '/images/linkedin.png' },
   { label: 'Instagram', href: 'https://www.instagram.com/m2stech/', image: '/images/instagram.png' },
+  { label: 'YouTube', href: 'https://www.youtube.com/@M2STECHTUR', image: '/images/youtube.png' },
 ]
 </script>
