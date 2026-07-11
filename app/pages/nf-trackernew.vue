@@ -403,7 +403,7 @@
             :href="downloadFileUrl"
             class="mt-5 inline-flex w-full items-center justify-center rounded-xl bg-m2s-primary-orange px-4 py-3 text-sm font-semibold text-white transition hover:bg-m2s-hover-orange"
             download
-            @click="closeDownloadModal"
+            @click="handleDownloadConversion"
           >
             Baixar NF Tracker
           </a>
@@ -637,6 +637,43 @@ const closeDownloadModal = () => {
   downloadReady.value = false
 }
 
+// Dispara os eventos de conversao ao concluir o download do NF Tracker.
+const trackDownloadConversion = () => {
+  if (typeof window === 'undefined' || typeof window.gtag === 'undefined') {
+    return
+  }
+
+  window.gtag('event', 'download_nftracker', {
+    event_category: 'NF Tracker',
+    event_label: 'Download Trial',
+    value: 1,
+  })
+
+  window.gtag('event', 'generate_lead', {
+    currency: 'BRL',
+    value: 1,
+  })
+
+  // Google Ads Conversion Event
+  // Apos criar a conversao no Google Ads,
+  // substituir por:
+  //
+  // gtag(
+  //   'event',
+  //   'conversion',
+  //   {
+  //      send_to: 'AW-11533926606/XXXXXXXX'
+  //   }
+  // )
+}
+
+// Handler do botao final de download: rastreia a conversao, fecha o modal
+// e permite que a navegacao/download ocorra normalmente (sem preventDefault).
+const handleDownloadConversion = () => {
+  trackDownloadConversion()
+  closeDownloadModal()
+}
+
 const submitDownloadEmail = async () => {
   if (!validateEmail(downloadEmail.value)) {
     emailError.value = 'Por favor, insira um e-mail valido.'
@@ -660,6 +697,13 @@ const submitDownloadEmail = async () => {
     downloadReady.value = true
 
     if (typeof window !== 'undefined' && typeof window.gtag !== 'undefined') {
+      // Lead real: o e-mail foi aceito pelo sistema e o download foi liberado.
+      window.gtag('event', 'lead_nftracker', {
+        event_category: 'NF Tracker',
+        event_label: 'Lead Trial',
+        value: 1,
+      })
+
       window.gtag('event', 'conversion', {
         send_to: 'AW-11533926606/EQhhCIKti4EaEM6B5_sq',
         event_label: `download_${downloadSource.value}`,
