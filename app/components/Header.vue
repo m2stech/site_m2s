@@ -27,7 +27,7 @@
           <a
             href="#contato"
             class="inline-flex items-center rounded-full bg-m2s-primary-orange px-5 py-3 text-sm font-semibold text-white shadow-orange transition hover:-translate-y-0.5 hover:bg-m2s-hover-orange"
-            @click.prevent="scrollTo('contato')"
+            @click.prevent="handleHeaderContactClick"
           >
             Falar com especialista
           </a>
@@ -63,7 +63,7 @@
           <a
             href="#contato"
             class="mt-2 inline-flex items-center justify-center rounded-2xl bg-m2s-primary-orange px-4 py-3 text-sm font-semibold text-white shadow-orange transition hover:bg-m2s-hover-orange"
-            @click.prevent="scrollToMobile('contato')"
+            @click.prevent="handleMobileContactClick"
           >
             Falar com especialista
           </a>
@@ -112,5 +112,15 @@ const scrollTo = (elementId) => {
 const scrollToMobile = (elementId) => {
   scrollTo(elementId)
   mobileMenuOpen.value = false
+}
+
+const handleHeaderContactClick = () => {
+  analytics.metaContact('home_header_falar_com_especialista')
+  scrollTo('contato')
+}
+
+const handleMobileContactClick = () => {
+  analytics.metaContact('home_header_mobile_falar_com_especialista')
+  scrollToMobile('contato')
 }
 </script>

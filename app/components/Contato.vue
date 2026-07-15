@@ -25,7 +25,7 @@
             target="_blank"
             rel="noreferrer"
             class="inline-flex shrink-0 items-center gap-3 rounded-full bg-[#111] px-7 py-3.5 text-sm font-semibold text-white shadow-[0_4px_20px_rgba(0,0,0,0.4)] transition hover:bg-[#1e1e1e]"
-            @click="analytics.whatsapp('cta_banner')"
+            @click="() => { analytics.metaContact('home_contact_banner_whatsapp'); analytics.whatsapp('cta_banner') }"
           >
             <MessageCircle class="h-5 w-5" />
             Falar no WhatsApp
@@ -161,6 +161,7 @@
                 rel="noreferrer"
                 class="flex h-11 w-11 items-center justify-center rounded-2xl border border-white/8 bg-white/[0.03] text-white/72 transition hover:border-m2s-primary-orange/30 hover:text-white"
                 :aria-label="social.label"
+                @click="handleSocialClick(social.label)"
               >
                 <img :src="social.image" :alt="social.label" class="h-5 w-5 object-contain" >
               </a>
@@ -194,6 +195,7 @@ const scrollToSection = (href) => {
 
 const handleContactItemClick = (label) => {
   const l = label.toLowerCase()
+  analytics.metaContact(`home_contact_item_${l}`)
   if (l === 'whatsapp') analytics.whatsapp('contact')
   else analytics.contactClick(l)
 }
@@ -205,8 +207,13 @@ const handleFormStart = () => {
 }
 
 const handleFormSubmit = () => {
+  analytics.metaLead('home_contact_form_submit')
   analytics.formSubmitAttempt()
   // TODO: integrar com backend/CRM e chamar formSubmitSuccess(timeMs) ou formSubmitError()
+}
+
+const handleSocialClick = (label) => {
+  analytics.metaContact(`home_footer_social_${label.toLowerCase()}`)
 }
 
 const contactItems = [

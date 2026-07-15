@@ -23,7 +23,7 @@
           </div>
           <h3 class="mt-6 text-xl font-semibold text-white">{{ service.title }}</h3>
           <p class="mt-4 flex-1 text-sm leading-7 text-white/62">{{ service.description }}</p>
-          <a href="#contato" class="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-m2s-primary-orange transition group-hover:gap-3" @click.prevent="() => { scrollToContact(); analytics.serviceClick(service.id) }">
+          <a href="#contato" class="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-m2s-primary-orange transition group-hover:gap-3" @click.prevent="() => { analytics.metaContact(`home_service_${service.id}_saiba_mais`); scrollToContact(); analytics.serviceClick(service.id) }">
             Saiba mais
             <ArrowRight class="h-4 w-4" />
           </a>
@@ -92,7 +92,7 @@
           </div>
           <h3 class="mt-5 text-xl font-semibold text-white">{{ c.title }}</h3>
           <p class="mt-3 flex-1 text-sm leading-7 text-white/62">{{ c.description }}</p>
-          <a href="#contato" class="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-m2s-primary-orange transition group-hover:gap-3" @click.prevent="() => { scrollToContact(); analytics.serviceClick(c.category.toLowerCase().replace(/\s+/g, '_')) }">
+          <a href="#contato" class="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-m2s-primary-orange transition group-hover:gap-3" @click.prevent="() => { analytics.metaContact(`home_case_${c.category.toLowerCase().replace(/\s+/g, '_')}_ver_case`); scrollToContact(); analytics.serviceClick(c.category.toLowerCase().replace(/\s+/g, '_')) }">
             Ver case
             <ArrowRight class="h-4 w-4" />
           </a>

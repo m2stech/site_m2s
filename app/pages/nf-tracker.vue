@@ -574,11 +574,11 @@
         <div class="contact-info-grid">
           <div class="contact-item">
             <strong>E-mail:</strong>
-            <a href="mailto:suporte@m2stech.com.br">suporte@m2stech.com.br</a>
+            <a href="mailto:suporte@m2stech.com.br" @click="trackEmailClickFooter">suporte@m2stech.com.br</a>
           </div>
           <div class="contact-item">
             <strong>Telefone:</strong>
-            <a href="https://wa.me/5531989509929" target="_blank" rel="noopener noreferrer">+55 (31) 98950-9929</a>
+            <a href="https://wa.me/5531989509929" target="_blank" rel="noopener noreferrer" @click="trackWhatsAppClickFooter">+55 (31) 98950-9929</a>
           </div>
         </div>
         <div class="company-info">
@@ -627,7 +627,7 @@
             :href="downloadFileUrl"
             class="modal-download-btn"
             download
-            @click="closeDownloadModal"
+            @click="handleDownloadConversion"
           >
             ⬇️ Baixar NF Tracker
           </a>
@@ -931,6 +931,7 @@ const gtag_report_conversion = (url, conversionLabel = '') => {
 const handleVideoClick = (event) => {
   event.preventDefault()
   const url = event.currentTarget.href
+  analytics.metaViewContent('nf_tracker_demo_video')
   
   gtag_report_conversion(url, 'video_youtube_click')
   
@@ -942,25 +943,34 @@ const handleVideoClick = (event) => {
 // Rastreamento de download — abre o modal de captura de e-mail
 const handleDownloadClick = (event) => {
   event.preventDefault()
+  analytics.metaLead('nf_tracker_download_hero')
   openDownloadModal(event.currentTarget.href, 'hero')
 }
 
 // Novo: Rastreamento download CTA middle
 const handleDownloadClickMiddle = (event) => {
   event.preventDefault()
+  analytics.metaLead('nf_tracker_download_middle')
   openDownloadModal(event.currentTarget.href, 'middle')
 }
 
 // Novo: Rastreamento download CTA bottom
 const handleDownloadClickBottom = (event) => {
   event.preventDefault()
+  analytics.metaLead('nf_tracker_download_bottom')
   openDownloadModal(event.currentTarget.href, 'bottom')
+}
+
+const handleDownloadConversion = () => {
+  analytics.metaLead('nf_tracker_download_started')
+  closeDownloadModal()
 }
 
 // Rastreamento de assinatura (preservado)
 const handleSubscribeClick = (event) => {
   event.preventDefault()
   const url = event.currentTarget.href
+  analytics.metaLead('nf_tracker_subscribe_hotmart')
   
   gtag_report_conversion(url, 'assinar_hotmart')
   
@@ -971,6 +981,7 @@ const handleSubscribeClick = (event) => {
 
 // Novos: Rastreamento de cliques em contatos
 const trackEmailClick = () => {
+  analytics.metaContact('nf_tracker_contact_hero_email')
   if (typeof window !== 'undefined' && typeof window.gtag !== 'undefined') {
     window.gtag('event', 'email_click', {
       'event_category': 'contact',
@@ -980,6 +991,7 @@ const trackEmailClick = () => {
 }
 
 const trackWhatsAppClick = () => {
+  analytics.metaContact('nf_tracker_contact_hero_whatsapp')
   if (typeof window !== 'undefined' && typeof window.gtag !== 'undefined') {
     window.gtag('event', 'whatsapp_click', {
       'event_category': 'contact',
@@ -989,6 +1001,7 @@ const trackWhatsAppClick = () => {
 }
 
 const trackEmailClickDemo = () => {
+  analytics.metaContact('nf_tracker_contact_demo_email')
   if (typeof window !== 'undefined' && typeof window.gtag !== 'undefined') {
     window.gtag('event', 'email_click', {
       'event_category': 'contact',
@@ -998,10 +1011,31 @@ const trackEmailClickDemo = () => {
 }
 
 const trackWhatsAppClickDemo = () => {
+  analytics.metaContact('nf_tracker_contact_demo_whatsapp')
   if (typeof window !== 'undefined' && typeof window.gtag !== 'undefined') {
     window.gtag('event', 'whatsapp_click', {
       'event_category': 'contact',
       'event_label': 'demo_whatsapp'
+    })
+  }
+}
+
+const trackEmailClickFooter = () => {
+  analytics.metaContact('nf_tracker_contact_footer_email')
+  if (typeof window !== 'undefined' && typeof window.gtag !== 'undefined') {
+    window.gtag('event', 'email_click', {
+      'event_category': 'contact',
+      'event_label': 'footer_email'
+    })
+  }
+}
+
+const trackWhatsAppClickFooter = () => {
+  analytics.metaContact('nf_tracker_contact_footer_whatsapp')
+  if (typeof window !== 'undefined' && typeof window.gtag !== 'undefined') {
+    window.gtag('event', 'whatsapp_click', {
+      'event_category': 'contact',
+      'event_label': 'footer_whatsapp'
     })
   }
 }

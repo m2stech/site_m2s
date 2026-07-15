@@ -1,5 +1,5 @@
 <template>
-  <section class="relative min-h-screen overflow-hidden bg-[#0d0d0f] pb-20 pt-10 sm:pb-24 lg:pb-28 lg:pt-16">
+  <section class="relative min-h-screen overflow-hidden bg-[#0d0d0f] pb-20 pt-20 sm:pb-24 lg:pb-28 lg:pt-24">
     <!-- Imagem de fundo cobrindo todo o hero -->
     <img
       src="/images/hero.png"
@@ -31,14 +31,14 @@
           <a
             href="#contato"
             class="inline-flex items-center justify-center rounded-2xl bg-m2s-primary-orange px-6 py-4 text-sm font-semibold text-white shadow-orange transition hover:-translate-y-0.5 hover:bg-m2s-hover-orange"
-            @click.prevent="() => { scrollTo('contato'); analytics.heroCta('solicitar_diagnostico') }"
+            @click.prevent="() => { analytics.metaLead('home_hero_solicitar_diagnostico'); scrollTo('contato'); analytics.heroCta('solicitar_diagnostico') }"
           >
             Solicitar diagnóstico
           </a>
           <a
             href="#servicos"
             class="inline-flex items-center justify-center rounded-2xl border border-white/20 bg-white/5 px-6 py-4 text-sm font-semibold text-white transition hover:border-m2s-primary-orange/40 hover:bg-white/10"
-            @click.prevent="() => { scrollTo('servicos'); analytics.heroCta('conhecer_servicos') }"
+            @click.prevent="() => { analytics.metaViewContent('home_hero_conhecer_servicos'); scrollTo('servicos'); analytics.heroCta('conhecer_servicos') }"
           >
             Conhecer serviços
           </a>
