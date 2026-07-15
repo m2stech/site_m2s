@@ -740,6 +740,7 @@ const gtag_report_conversion = (url, conversionLabel = '') => {
 const handleDownloadClick = (event) => {
   event.preventDefault()
   analytics.heroCta('nf_tracker_download_hero')
+  analytics.metaLead('nf_tracker_download_hero')
   openDownloadModal(event.currentTarget.href, 'hero')
 }
 

@@ -11,9 +11,16 @@
 // ── Tipo mínimo para window.gtag ─────────────────────────────────────────────
 type GtagFn = (...args: unknown[]) => void
 
+declare global {
+  interface Window {
+    gtag?: GtagFn
+    fbq?: (...args: unknown[]) => void
+  }
+}
+
 function gtag(): GtagFn | undefined {
   if (import.meta.server) return undefined
-  return (window as Record<string, unknown>).gtag as GtagFn | undefined
+  return window.gtag
 }
 
 // ── Dispatcher base ──────────────────────────────────────────────────────────
@@ -44,6 +51,48 @@ export const analytics = {
   /** Mudança de rota (SPA) */
   routeChange: (to: string) =>
     trackEvent('page_view', { event_category: 'navigation', event_label: to }),
+
+  // ── Meta Pixel ─────────────────────────────────────────────────────────────
+
+  /** Dispara PageView no Meta Pixel */
+  metaPageView: () => {
+    if (typeof window !== 'undefined' && typeof window.fbq === 'function') {
+      window.fbq('track', 'PageView')
+    }
+  },
+
+  /** Dispara Lead no Meta Pixel */
+  metaLead: (label?: string) => {
+    if (typeof window !== 'undefined' && typeof window.fbq === 'function') {
+      if (label) {
+        window.fbq('track', 'Lead', { content_name: label })
+        return
+      }
+      window.fbq('track', 'Lead')
+    }
+  },
+
+  /** Dispara Contact no Meta Pixel */
+  metaContact: (label?: string) => {
+    if (typeof window !== 'undefined' && typeof window.fbq === 'function') {
+      if (label) {
+        window.fbq('track', 'Contact', { content_name: label })
+        return
+      }
+      window.fbq('track', 'Contact')
+    }
+  },
+
+  /** Dispara ViewContent no Meta Pixel */
+  metaViewContent: (contentName?: string) => {
+    if (typeof window !== 'undefined' && typeof window.fbq === 'function') {
+      if (contentName) {
+        window.fbq('track', 'ViewContent', { content_name: contentName })
+        return
+      }
+      window.fbq('track', 'ViewContent')
+    }
+  },
 
   // ── Hero ───────────────────────────────────────────────────────────────────
 
