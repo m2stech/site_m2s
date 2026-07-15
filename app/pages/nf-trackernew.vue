@@ -753,6 +753,7 @@ const handleDownloadClickMiddle = (event) => {
 
 const handleDownloadClickBottom = (event) => {
   event.preventDefault()
+  analytics.metaLead('nf_tracker_download_pricing')
   analytics.heroCta('nf_tracker_download_bottom')
   openDownloadModal(event.currentTarget.href, 'bottom')
 }
