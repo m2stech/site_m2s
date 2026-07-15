@@ -604,6 +604,7 @@ const toggleFaq = (index) => {
 
 const trackWhatsAppClick = (source) => {
   analytics.whatsapp(source)
+  if (source === 'hero') analytics.metaContact('nf_tracker_contact_hero')
   if (typeof window !== 'undefined' && typeof window.gtag !== 'undefined') {
     window.gtag('event', 'whatsapp_click', {
       event_category: 'contact',
