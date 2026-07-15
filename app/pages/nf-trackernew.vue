@@ -88,7 +88,7 @@
               </span>
 
               <h1 class="mt-6 max-w-2xl text-4xl font-semibold leading-tight text-white sm:text-5xl lg:text-6xl lg:leading-[1.04]">
-                Organize todas as suas notas fiscais de servico em poucos minutos.
+                Baixe XML e Danfes de NFS-e em poucos minutos.
               </h1>
 
               <p class="mt-6 max-w-xl text-base leading-8 text-white/75 sm:text-lg">
