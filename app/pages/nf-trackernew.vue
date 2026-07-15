@@ -605,6 +605,10 @@ const toggleFaq = (index) => {
 const trackWhatsAppClick = (source) => {
   analytics.whatsapp(source)
   if (source === 'hero') analytics.metaContact('nf_tracker_contact_hero')
+  if (source === 'header') analytics.metaContact('nf_tracker_contact_header')
+  if (source === 'mobile_menu') analytics.metaContact('nf_tracker_contact_mobile_menu')
+  if (source === 'pricing') analytics.metaContact('nf_tracker_contact_pricing')
+  if (source === 'footer') analytics.metaContact('nf_tracker_contact_footer')
   if (typeof window !== 'undefined' && typeof window.gtag !== 'undefined') {
     window.gtag('event', 'whatsapp_click', {
       event_category: 'contact',
@@ -749,6 +753,7 @@ const handleDownloadClick = (event) => {
 const handleDownloadClickMiddle = (event) => {
   event.preventDefault()
   analytics.heroCta('nf_tracker_download_middle')
+  analytics.metaLead('nf_tracker_download_middle')
   openDownloadModal(event.currentTarget.href, 'middle')
 }
 
