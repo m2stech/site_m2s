@@ -677,7 +677,7 @@ const trackDownloadConversion = () => {
 const handleDownloadConversion = () => {
   trackDownloadConversion()
   closeDownloadModal()
-  analytics.metaLead('nf_tracker_download_started')
+  analytics.metaCompleteRegistration('nf_tracker_download_started')
 }
 
 const submitDownloadEmail = async () => {

@@ -83,6 +83,17 @@ export const analytics = {
     }
   },
 
+  /** Dispara CompleteRegistration no Meta Pixel */
+  metaCompleteRegistration: (label?: string) => {
+    if (typeof window !== 'undefined' && typeof window.fbq === 'function') {
+      if (label) {
+        window.fbq('track', 'CompleteRegistration', { content_name: label })
+        return
+      }
+      window.fbq('track', 'CompleteRegistration')
+    }
+  },
+
   /** Dispara ViewContent no Meta Pixel */
   metaViewContent: (contentName?: string) => {
     if (typeof window !== 'undefined' && typeof window.fbq === 'function') {

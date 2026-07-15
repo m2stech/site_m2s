@@ -962,7 +962,7 @@ const handleDownloadClickBottom = (event) => {
 }
 
 const handleDownloadConversion = () => {
-  analytics.metaLead('nf_tracker_download_started')
+  analytics.metaCompleteRegistration('nf_tracker_download_started')
   closeDownloadModal()
 }
 
