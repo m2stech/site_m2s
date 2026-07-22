@@ -169,6 +169,56 @@
         </div>
       </section>
 
+      <section class="bg-[#ffffff] py-20 text-[#0f1115]">
+        <div class="container-m2s">
+          <p class="text-center text-xs font-semibold uppercase tracking-[0.2em] text-m2s-primary-orange">Demonstracao</p>
+          <h2 class="mx-auto mt-4 max-w-4xl text-center text-3xl font-semibold leading-tight text-[#2f3542] sm:text-4xl">
+            Veja o NF Tracker funcionando em menos de 3 minutos
+          </h2>
+          <p class="mx-auto mt-5 max-w-3xl text-center text-base leading-8 text-[#49505c] sm:text-lg">
+            Descubra como baixar XML, DANFE, eventos e planilhas Excel automaticamente utilizando a API Oficial NFSE.gov.br.
+          </p>
+
+          <div class="mx-auto mt-12 max-w-[900px] overflow-hidden rounded-3xl border border-black/8 bg-white shadow-[0_16px_35px_rgba(12,16,24,0.08)]">
+            <div class="relative w-full overflow-hidden pt-[56.25%]">
+              <iframe
+                class="absolute inset-0 h-full w-full"
+                src="https://www.youtube.com/embed/Voz7N9HGR1E"
+                title="Demonstracao do NF Tracker"
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </div>
+
+          <ul class="mx-auto mt-10 grid max-w-4xl gap-4 text-sm text-[#3f4550] sm:grid-cols-3 sm:text-base">
+            <li class="flex items-start justify-center gap-3 text-center sm:justify-start sm:text-left">
+              <CheckCircle2 class="mt-0.5 h-5 w-5 shrink-0 text-m2s-primary-orange" />
+              <span>Demonstração real do sistema</span>
+            </li>
+            <li class="flex items-start justify-center gap-3 text-center sm:justify-start sm:text-left">
+              <CheckCircle2 class="mt-0.5 h-5 w-5 shrink-0 text-m2s-primary-orange" />
+              <span>Veja todas as funcionalidades antes de instalar</span>
+            </li>
+            <li class="flex items-start justify-center gap-3 text-center sm:justify-start sm:text-left">
+              <CheckCircle2 class="mt-0.5 h-5 w-5 shrink-0 text-m2s-primary-orange" />
+              <span>Sem edição ou simulações</span>
+            </li>
+          </ul>
+
+          <div class="mt-10 text-center">
+            <a
+              href="/downloads/NF_Tracker.rar"
+              class="inline-flex items-center justify-center rounded-2xl bg-[#15161a] px-8 py-4 text-sm font-semibold text-white transition hover:bg-black"
+              @click="handleDownloadClickMiddle"
+            >
+              Baixar gratuitamente
+            </a>
+          </div>
+        </div>
+      </section>
+
       <section id="funcionalidades" class="bg-[#ffffff] py-20 text-[#0f1115]">
         <div class="container-m2s">
           <p class="text-center text-xs font-semibold uppercase tracking-[0.2em] text-m2s-primary-orange">Recursos principais</p>
